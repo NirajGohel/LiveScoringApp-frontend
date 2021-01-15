@@ -1,0 +1,29 @@
+<div class="container" style="margin: 8rem auto 2rem">
+  <div class="row">
+    <div class="col-lg-6">
+      <h1 class="h1">Scoring System For Local Matches</h1>
+
+      <h4 class="h4 my-lg-3" style="font-weight: 450">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam,
+        dolores sapiente saepe tenetur optio provident consequuntur molestias.
+        Sapiente vero at assumenda sit laboriosam id dolorum obcaecati
+        necessitatibus pariatur. Fugit, ut.
+      </h4>
+
+      <a routerLink="/signup" class="btn btn-primary btn-lg my-lg-2"
+        >Live Matches</a
+      >
+    </div>
+
+    <div class="col-lg-6">
+      <img src="../assets/images/hero-img-4.jpg" alt="Img" class="img-fluid" />
+    </div>
+  </div>
+
+  <div class="row mt-5" id="games">
+    <h1 class="h1 mb-3">Games</h1>
+    <div class="col-lg-4" *ngFor="let game of games">
+      <card [game]="game"></card>
+    </div>
+  </div>
+</div>

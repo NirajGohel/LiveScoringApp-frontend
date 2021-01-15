@@ -1,0 +1,74 @@
+<div class="container" style="margin: 8rem auto 2rem">
+  <p class="h2 text-center">Scorer | Signup</p>
+
+  <div class="row justify-content-center my-4">
+    <div class="col-lg-4">
+      <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control mb-3"
+          id="username"
+          name="username"
+          autocomplete="off"
+          formControlName="username"
+        />
+
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control mb-3"
+          id="email"
+          name="email"
+          autocomplete="off"
+          formControlName="email"
+        />
+
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control mb-3"
+          id="password"
+          name="password"
+          autocomplete="off"
+          formControlName="password"
+        />
+
+        <label for="confirm_password" class="form-label"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          class="form-control mb-3"
+          id="confirm_password"
+          name="confirm_password"
+          autocomplete="off"
+          formControlName="confirmpassword"
+        />
+
+        <label for="confirm_password" class="form-label">Mobile Number</label>
+        <input
+          type="password"
+          class="form-control mb-3"
+          id="mobile_no"
+          name="mobile_no"
+          autocomplete="off"
+          formControlName="mobileno"
+        />
+
+        <input
+          type="submit"
+          class="btn btn-block btn-primary w-100"
+          value="Join"
+          [disabled]="signupForm.invalid"
+        />
+      </form>
+
+      <div class="text-center mt-3">
+        Already Have An Account? <a href="/login" routerLink="/login">Login</a
+        ><br />
+        <a href="" routerLink="">Home</a>
+      </div>
+    </div>
+  </div>
+</div>
