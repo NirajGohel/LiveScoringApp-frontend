@@ -54,19 +54,19 @@
           name="mobile_no"
           autocomplete="off"
           formControlName="mobileno"
+          pattern="[6-9]{1}[0-9]{9}"
         />
 
         <input
           type="submit"
           class="btn btn-block btn-primary w-100"
-          value="Join"
+          value="Signup"
           [disabled]="signupForm.invalid"
         />
       </form>
 
       <div class="text-center mt-3">
-        Already Have An Account? <a href="/login" routerLink="/login">Login</a
-        ><br />
+        Already Have An Account? <a routerLink="/scorer">Login</a><br />
         <a href="" routerLink="">Home</a>
       </div>
     </div>

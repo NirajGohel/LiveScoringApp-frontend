@@ -1,4 +1,6 @@
+<!-- Do not show this to scorer and admin. This is only for viewer(fans) -->
 <navbar *ngIf="!router.url.includes('dashboard')"></navbar>
 <footer *ngIf="!router.url.includes('dashboard')"></footer>
 
+<!-- Show this to scorer only -->
 <scorer-dashboard *ngIf="router.url.includes('dashboard')"></scorer-dashboard>
