@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "live-scoring-app"
+    }
+  },
+  "defaultProject": "live-scoring-app",
+  "cli": {
+    "analytics": "3c8cb34b-2c5b-44b2-b4ff-2aaec5afc55a"
+  }
 }

@@ -18,4 +18,16 @@ export class ScorerService {
       responseType: 'text',
     });
   }
+
+  forgotpassword(scorer) {
+    return this.http.post(`${this.baseUrl}/forgotpassword`, scorer, {
+      responseType: 'text',
+    });
+  }
+
+  changepassword(scorer) {
+    return this.http.put(`${this.baseUrl}/changepassword`, scorer, {
+      responseType: 'text',
+    });
+  }
 }

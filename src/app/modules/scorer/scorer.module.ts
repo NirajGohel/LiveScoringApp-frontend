@@ -6,9 +6,11 @@ import { ScorerRoutingModule } from './scorer-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, DashboardComponent],
+  declarations: [LoginComponent, SignupComponent, DashboardComponent, ForgotPasswordComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
