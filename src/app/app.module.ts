@@ -11,6 +11,8 @@ import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ScorerModule } from './modules/scorer/scorer.module';
+import { FootballModule } from './modules/football/football.module';
+
 // import { LoginComponent } from './modules/scorer/login/login.component';
 // import { SignupComponent } from './modules/scorer/signup/signup.component';
 // import { DashboardComponent } from './modules/scorer/dashboard/dashboard.component';
@@ -33,6 +35,7 @@ import { ScorerModule } from './modules/scorer/scorer.module';
     // FormsModule,
     HttpClientModule,
     ScorerModule,
+    FootballModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,10 +6,25 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/7b1cae8ae3.js"></script>
   </head>
   <body>
     <app-root></app-root>
+
+    <script>
+      $(document).ready(function () {
+        $(".navbar-nav li a").click(function (event) {
+          $(".navbar-collapse").collapse("hide");
+        });
+      });
+
+      $(document).ready(function () {
+        $(".navbar-nav li a").click(function (event) {
+          $(".navbar-collapse-sm").collapse("hide");
+        });
+      });
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

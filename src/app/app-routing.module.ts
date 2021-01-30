@@ -16,7 +16,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/scorer/scorer.module').then((m) => m.ScorerModule),
   },
-  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+  },
+  { path: 'football', loadChildren: () => import('./modules/football/football.module').then(m => m.FootballModule) },
 ];
 
 @NgModule({

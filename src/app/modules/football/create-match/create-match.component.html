@@ -1,0 +1,501 @@
+<div class="container-fluid mt-3 mb-5">
+  <p class="h3" style="font-weight: bold">Create Football Match</p>
+  <p class="h5" style="font-weight: normal">
+    Enter the details of the match in below forms
+  </p>
+
+  <div class="accordion mt-4" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          <span class="h5" style="font-weight: normal">Match Details</span>
+        </button>
+      </h2>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <form [formGroup]="matchForm">
+            <div class="row">
+              <div class="col-4">
+                <label for="title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="title"
+                  autocomplete="off"
+                  formControlName="title"
+                />
+
+                <label for="start_time" class="form-label">Time</label>
+                <input
+                  type="time"
+                  class="form-control mb-3"
+                  name="start_time"
+                  autocomplete="off"
+                  formControlName="start_time"
+                />
+
+                <label for="game_time" class="form-label">Game Time</label>
+                <input
+                  type="number"
+                  class="form-control mb-3"
+                  name="game_time"
+                  autocomplete="off"
+                  formControlName="game_time"
+                />
+              </div>
+
+              <div class="col-4">
+                <label for="title" class="form-label">Date</label>
+                <input
+                  type="date"
+                  class="form-control mb-3"
+                  name="date"
+                  autocomplete="off"
+                  formControlName="date"
+                />
+
+                <label for="city" class="form-label">City</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="city"
+                  autocomplete="off"
+                  formControlName="city"
+                />
+
+                <label for="venue" class="form-label">Venue</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="venue"
+                  autocomplete="off"
+                  formControlName="venue"
+                />
+              </div>
+
+              <div class="col-4">
+                <label for="no_of_substitutes" class="form-label"
+                  >No of substitute</label
+                >
+                <input
+                  type="number"
+                  class="form-control mb-3"
+                  name="no_of_substitutes"
+                  autocomplete="off"
+                  formControlName="no_of_substitutes"
+                />
+              </div>
+            </div>
+            <!-- <input
+              type="submit"
+              class="btn btn-primary"
+              value="Save"
+              [disabled]="matchForm.invalid"
+            /> -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo"
+          aria-expanded="false"
+          aria-controls="collapseTwo"
+        >
+          <span class="h5" style="font-weight: normal">Team 1</span>
+        </button>
+      </h2>
+      <div
+        id="collapseTwo"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <form [formGroup]="team1Form">
+            <div class="row">
+              <div class="col-4">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="name"
+                  autocomplete="off"
+                  formControlName="name"
+                />
+
+                <label for="headcoach" class="form-label">Headcoach</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="headcoach"
+                  autocomplete="off"
+                  formControlName="headcoach"
+                />
+
+                <label for="player1" class="form-label">Player 1</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="game_time"
+                  autocomplete="off"
+                  formControlName="player1"
+                />
+
+                <label for="player2" class="form-label">Player 2</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player2"
+                  autocomplete="off"
+                  formControlName="player2"
+                />
+
+                <label for="player3" class="form-label">Player 3</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player3"
+                  autocomplete="off"
+                  formControlName="player3"
+                />
+
+                <label for="player4" class="form-label">Player 4</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player4"
+                  autocomplete="off"
+                  formControlName="player4"
+                />
+              </div>
+
+              <div class="col-4">
+                <label for="player5" class="form-label">Player 5</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player5"
+                  autocomplete="off"
+                  formControlName="player5"
+                />
+
+                <label for="player6" class="form-label">Player 6</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player6"
+                  autocomplete="off"
+                  formControlName="player6"
+                />
+
+                <label for="player7" class="form-label">Player 7</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player7"
+                  autocomplete="off"
+                  formControlName="player7"
+                />
+
+                <label for="player8" class="form-label">Player 8</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player8"
+                  autocomplete="off"
+                  formControlName="player8"
+                />
+
+                <label for="player9" class="form-label">Player 9</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player9"
+                  autocomplete="off"
+                  formControlName="player9"
+                />
+
+                <label for="player10" class="form-label">Player 10</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player10"
+                  autocomplete="off"
+                  formControlName="player10"
+                />
+              </div>
+
+              <div class="col-4">
+                <label for="player11" class="form-label">Player 11</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player11"
+                  autocomplete="off"
+                  formControlName="player11"
+                />
+
+                <label for="player12" class="form-label">Player 12</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player12"
+                  autocomplete="off"
+                  formControlName="player12"
+                />
+
+                <label for="player13" class="form-label">Player 13</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player13"
+                  autocomplete="off"
+                  formControlName="player13"
+                />
+
+                <label for="player14" class="form-label">Player 14</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player14"
+                  autocomplete="off"
+                  formControlName="player14"
+                />
+
+                <label for="player15" class="form-label">Player 15</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player15"
+                  autocomplete="off"
+                  formControlName="player15"
+                />
+              </div>
+            </div>
+            <!-- <input
+              type="submit"
+              class="btn btn-primary"
+              value="Save"
+              [disabled]="team1Form.invalid"
+            /> -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseThree"
+          aria-expanded="false"
+          aria-controls="collapseThree"
+        >
+          <span class="h5" style="font-weight: normal">Team 2</span>
+        </button>
+      </h2>
+      <div
+        id="collapseThree"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingThree"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <form [formGroup]="team2Form">
+            <div class="row">
+              <div class="col-4">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="name"
+                  autocomplete="off"
+                  formControlName="name"
+                />
+
+                <label for="headcoach" class="form-label">Headcoach</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="headcoach"
+                  autocomplete="off"
+                  formControlName="headcoach"
+                />
+
+                <label for="player1" class="form-label">Player 1</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="game_time"
+                  autocomplete="off"
+                  formControlName="player1"
+                />
+
+                <label for="player2" class="form-label">Player 2</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player2"
+                  autocomplete="off"
+                  formControlName="player2"
+                />
+
+                <label for="player3" class="form-label">Player 3</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player3"
+                  autocomplete="off"
+                  formControlName="player3"
+                />
+
+                <label for="player4" class="form-label">Player 4</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player4"
+                  autocomplete="off"
+                  formControlName="player4"
+                />
+              </div>
+
+              <div class="col-4">
+                <label for="player5" class="form-label">Player 5</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player5"
+                  autocomplete="off"
+                  formControlName="player5"
+                />
+
+                <label for="player6" class="form-label">Player 6</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player6"
+                  autocomplete="off"
+                  formControlName="player6"
+                />
+
+                <label for="player7" class="form-label">Player 7</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player7"
+                  autocomplete="off"
+                  formControlName="player7"
+                />
+
+                <label for="player8" class="form-label">Player 8</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player8"
+                  autocomplete="off"
+                  formControlName="player8"
+                />
+
+                <label for="player9" class="form-label">Player 9</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player9"
+                  autocomplete="off"
+                  formControlName="player9"
+                />
+
+                <label for="player10" class="form-label">Player 10</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player10"
+                  autocomplete="off"
+                  formControlName="player10"
+                />
+              </div>
+
+              <div class="col-4">
+                <label for="player11" class="form-label">Player 11</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player11"
+                  autocomplete="off"
+                  formControlName="player11"
+                />
+
+                <label for="player12" class="form-label">Player 12</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player12"
+                  autocomplete="off"
+                  formControlName="player12"
+                />
+
+                <label for="player13" class="form-label">Player 13</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player13"
+                  autocomplete="off"
+                  formControlName="player13"
+                />
+
+                <label for="player14" class="form-label">Player 14</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player14"
+                  autocomplete="off"
+                  formControlName="player14"
+                />
+
+                <label for="player15" class="form-label">Player 15</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  name="player15"
+                  autocomplete="off"
+                  formControlName="player15"
+                />
+              </div>
+            </div>
+            <!-- <input
+              type="submit"
+              class="btn btn-primary"
+              value="Save"
+              [disabled]="team2Form.invalid"
+            /> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input
+    type="submit"
+    class="btn btn-primary mt-3"
+    value="Create Match"
+    [disabled]="matchForm.invalid || team1Form.invalid || team2Form.invalid"
+    (click)="createMatch()"
+  />
+</div>

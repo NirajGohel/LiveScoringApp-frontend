@@ -1,0 +1,36 @@
+<div class="container-fluid mt-3">
+  <img
+    src="../../../../assets/images/user.svg"
+    alt=""
+    style="height: 45px; width: 45px"
+  />
+  <span class="h3 ms-lg-3" style="font-weight: normal">{{ username }}</span>
+
+  <div class="mt-4">
+    <h4 class="h4">Manage Matches</h4>
+    <table class="table table-striped mt-2">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Team 1</th>
+          <th>Team 2</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let m of matches">
+          <td>{{ m.title }}</td>
+          <td>{{ m.team1.name }}</td>
+          <td>{{ m.team2.name }}</td>
+          <td>{{ m.date }}</td>
+          <td>{{ m.start_time }}</td>
+          <td><a href="">Start</a></td>
+          <td><a href="">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

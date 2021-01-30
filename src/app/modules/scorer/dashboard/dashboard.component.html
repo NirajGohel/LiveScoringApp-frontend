@@ -1,1 +1,79 @@
-<h1>Scorer Home Page</h1>
+<div class="container-fluid pl-lg-0">
+  <div class="row">
+    <div
+      class="navbar flex-column col-lg-2 col-md-3 fixed-left navbar-collapse-sm navbar-expand-md bg-primary navbar-dark mynav"
+    >
+      <h4 class="text-light h4">Live Scoring System</h4>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <nav
+        class="navbar navbar-dark collapse navbar-collapse"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav flex-column" id="nav">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/scorer/dashboard/home"
+              routerLinkActive="active"
+              >Dashboard</a
+            >
+          </li>
+          <li class="nav-item dropend">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Create Match
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="navbarDropdown"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="/football/create"
+                  routerLinkActive="active"
+                  >Football</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/volleyball/create"
+                  >Volleyball</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/cricket/create"
+                  >Cricket</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="col-lg-10 col-md-9" style="margin-left: 15.5rem">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

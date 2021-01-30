@@ -19,15 +19,19 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   });
 
+  res;
+
   ngOnInit(): void {}
 
   login() {
     if (this.loginForm.valid) {
       this.Scorer.login(this.loginForm.value).subscribe(
         (data) => {
+          this.res = data;
           console.log(data);
-          console.log(this.loginForm.value);
-          this.router.navigate(['/dashboard']);
+          console.log(this.res.scorer._id);
+          localStorage.setItem('id', this.res.scorer._id);
+          this.router.navigate(['/scorer/dashboard']);
         },
         (error) => {
           if (error.status == 422) alert('Password is incorrect');

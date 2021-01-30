@@ -14,9 +14,7 @@ export class ScorerService {
   }
 
   login(scorer) {
-    return this.http.post(`${this.baseUrl}/login`, scorer, {
-      responseType: 'text',
-    });
+    return this.http.post(`${this.baseUrl}/login`, scorer);
   }
 
   forgotpassword(scorer) {
@@ -29,5 +27,9 @@ export class ScorerService {
     return this.http.put(`${this.baseUrl}/changepassword`, scorer, {
       responseType: 'text',
     });
+  }
+
+  getScorer(id) {
+    return this.http.get(`${this.baseUrl}/getscorer/${id}`);
   }
 }
