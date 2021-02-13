@@ -22,6 +22,8 @@ export class SignupComponent implements OnInit {
     mobileno: new FormControl('', [Validators.required]),
   });
 
+  public res;
+
   ngOnInit(): void {}
 
   signup() {
@@ -31,7 +33,11 @@ export class SignupComponent implements OnInit {
     ) {
       this.Scorer.signup(this.signupForm.value).subscribe(
         (data) => {
-          this.router.navigate(['/dashboard']);
+          this.res = data;
+          console.log(data);
+          console.log(this.res._id);
+          localStorage.setItem('id', this.res._id);
+          this.router.navigate(['/scorer/dashboard']);
         },
         (error) => console.log(error)
       );

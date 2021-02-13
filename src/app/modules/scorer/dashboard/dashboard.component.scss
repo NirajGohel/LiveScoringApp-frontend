@@ -1,10 +1,15 @@
 .mynav {
   position: fixed;
-  overflow: auto;
 }
 
 @media (min-width: 768px) {
   .mynav {
     height: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .mynav {
+    position: relative;
   }
 }

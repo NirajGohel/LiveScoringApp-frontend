@@ -16,4 +16,10 @@ export class FootballService {
   getAllScorerMatches(id) {
     return this.http.get(`${this.baseUrl}/getmatchesByscorer/${id}`);
   }
+
+  deleteMatch(id) {
+    return this.http.delete(`${this.baseUrl}/deletematch/${id}`, {
+      responseType: 'text',
+    });
+  }
 }

@@ -1,4 +1,3 @@
-import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -73,36 +72,39 @@ export class CreateMatchComponent implements OnInit {
     this.data = this.matchForm.value;
     this.data.scorer_id = localStorage.getItem('id');
 
+    //Player List of Team 1
     for (let i = 1; i <= 15; i++) {
       this.str = `player${i}`;
       this.team1_players.push(this.team1Form.value[this.str]);
     }
 
+    //Team 1 Information
     this.data.team1 = {
       name: this.team1Form.value.name,
       headcoach: this.team1Form.value.headcoach,
       squad: this.team1_players,
     };
 
+    //Player List of Team 2
     for (let i = 1; i <= 15; i++) {
       this.str = `player${i}`;
       this.team2_players.push(this.team2Form.value[this.str]);
     }
 
+    //Team 2 Information
     this.data.team2 = {
-      name: this.team1Form.value.name,
-      headcoach: this.team1Form.value.headcoach,
+      name: this.team2Form.value.name,
+      headcoach: this.team2Form.value.headcoach,
       squad: this.team2_players,
     };
 
-    // console.log(this.data);
-
-    this.Football.createMatch(this.data).subscribe(
+    console.log(this.data);
+    /* this.Football.createMatch(this.data).subscribe(
       (data) => {
         // console.log(data);
         this.router.navigate(['/scorer/dashboard/home']);
       },
       (error) => console.log(error)
-    );
+    ); */
   }
 }

@@ -4,11 +4,15 @@
     alt=""
     style="height: 45px; width: 45px"
   />
-  <span class="h3 ms-lg-3" style="font-weight: normal">{{ username }}</span>
+  <span class="h3 ms-lg-3 ms-sm-3" style="font-weight: normal">{{
+    username
+  }}</span>
 
   <div class="mt-4">
     <h4 class="h4">Manage Matches</h4>
-    <table class="table table-striped mt-2">
+    <h5 class="h5" style="font-weight: normal">Football</h5>
+
+    <table class="table table-striped mt-3">
       <thead>
         <tr>
           <th>Title</th>
@@ -25,10 +29,12 @@
           <td>{{ m.title }}</td>
           <td>{{ m.team1.name }}</td>
           <td>{{ m.team2.name }}</td>
-          <td>{{ m.date }}</td>
+          <td>{{ m.date | date: "mediumDate" }}</td>
           <td>{{ m.start_time }}</td>
-          <td><a href="">Start</a></td>
-          <td><a href="">Delete</a></td>
+          <td><a routerLink="/football/start/{{ m._id }}">Start</a></td>
+          <td>
+            <a routerLink="/scorer/dashboard" (click)="delete(m._id)">Delete</a>
+          </td>
         </tr>
       </tbody>
     </table>
