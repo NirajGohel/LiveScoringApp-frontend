@@ -1,3 +1,68 @@
 <div class="container-fluid mt-3">
-  <p>start-match works!</p>
+  <p class="h3" style="font-weight: bold">Create Lineup</p>
+  <p class="h5 mb-5" style="font-weight: normal">
+    Select 11 players from both teams
+  </p>
+
+  <div class="d-flex justify-content-between">
+    <p class="fs-5">Match: {{ res.title }}</p>
+    <p class="fs-5">Venue: {{ res.venue }}</p>
+    <p class="fs-5">Date: {{ res.date | date: "mediumDate" }}</p>
+  </div>
+
+  <div class="row">
+    <!-- For Team 1 -->
+    <div class="col-lg-6">
+      <div class="list-group">
+        <label class="list-group-item fs-5 text-center">
+          {{ res.team1.name }}
+        </label>
+
+        <label class="list-group-item" *ngFor="let p of res.team1.squad">
+          <input
+            type="checkbox"
+            class="form-check-input me-1"
+            value="{{ p }}"
+            (change)="onChangeTeam1(p, $event.target.checked)"
+          />
+          {{ p }}
+        </label>
+
+        <label class="list-group-item">
+          Selected Players: {{ team1_count }}
+        </label>
+      </div>
+    </div>
+
+    <!-- For Team 2 -->
+    <div class="col-lg-6">
+      <div class="list-group">
+        <label class="list-group-item fs-5 text-center">
+          {{ res.team2.name }}
+        </label>
+
+        <label class="list-group-item" *ngFor="let p of res.team2.squad">
+          <input
+            type="checkbox"
+            class="form-check-input me-1"
+            value="{{ p }}"
+            (change)="onChangeTeam2(p, $event.target.checked)"
+          />
+          {{ p }}
+        </label>
+
+        <label class="list-group-item">
+          Selected Players: {{ team2_count }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <input
+    type="submit"
+    class="btn btn-primary mt-4 mb-5"
+    value="Create Lineup"
+    (click)="onSubmit()"
+    [disabled]="isDisabled"
+  />
 </div>

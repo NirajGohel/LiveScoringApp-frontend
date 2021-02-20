@@ -22,4 +22,29 @@ export class FootballService {
       responseType: 'text',
     });
   }
+
+  getMatch(id) {
+    return this.http.get(`${this.baseUrl}/getmatch/${id}`);
+  }
+
+  createLineup(data) {
+    return this.http.put(`${this.baseUrl}/startgame`, data);
+  }
+
+  getTime() {
+    return this.http.get(`${this.baseUrl}/gettime`);
+  }
+
+  //Scoring of the match
+  addGoal(data) {
+    return this.http.put(`${this.baseUrl}/addgoal`, data);
+  }
+
+  undoGoal(data) {
+    return this.http.put(`${this.baseUrl}/undogoal`, data);
+  }
+
+  addYellowCard(data) {
+    return this.http.put(`${this.baseUrl}/addyellowcard`, data);
+  }
 }

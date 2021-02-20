@@ -6,9 +6,10 @@ import { FootballRoutingModule } from './football-routing.module';
 import { FootballComponent } from './football.component';
 import { CreateMatchComponent } from './create-match/create-match.component';
 import { StartMatchComponent } from './start-match/start-match.component';
+import { ScoringMatchComponent } from './scoring-match/scoring-match.component';
 
 @NgModule({
-  declarations: [FootballComponent, CreateMatchComponent, StartMatchComponent],
+  declarations: [FootballComponent, CreateMatchComponent, StartMatchComponent, ScoringMatchComponent],
   imports: [
     CommonModule,
     FootballRoutingModule,

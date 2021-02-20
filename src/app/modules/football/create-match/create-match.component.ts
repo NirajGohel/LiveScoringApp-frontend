@@ -98,13 +98,12 @@ export class CreateMatchComponent implements OnInit {
       squad: this.team2_players,
     };
 
-    console.log(this.data);
-    /* this.Football.createMatch(this.data).subscribe(
+    this.Football.createMatch(this.data).subscribe(
       (data) => {
-        // console.log(data);
+        console.log(data);
         this.router.navigate(['/scorer/dashboard/home']);
       },
       (error) => console.log(error)
-    ); */
+    );
   }
 }

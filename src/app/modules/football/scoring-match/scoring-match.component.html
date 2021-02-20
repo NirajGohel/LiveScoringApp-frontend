@@ -1,0 +1,192 @@
+<div class="container-fluid">
+  <div class="row mt-4">
+    <div class="card col-12">
+      <div class="d-flex justify-content-center">
+        <p class="fs-5 p-2">{{ this.res.team1.name }}</p>
+        <p class="h1 px-4">{{ this.team1_score }}</p>
+        <p class="fs-5 pt-2">-</p>
+        <p class="h1 px-4">{{ this.team2_score }}</p>
+        <p class="fs-5 p-2">{{ this.res.team2.name }}</p>
+      </div>
+      <p class="fs-5 text-center text-success">{{ this.minute }}</p>
+
+      <div>
+        <p class="fs-5">{{ this.res.team1.name }}</p>
+        <p>Goals</p>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Minute</th>
+              <th>Player name</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let i of t1_goals">
+              <td>{{ i.time }}</td>
+              <td>{{ i.scorer }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="fs-5">{{ this.res.team2.name }}</p>
+        <p>Goals</p>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Minute</th>
+              <th scope="col">Player name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of t2_goals">
+              <td>{{ i.time }}</td>
+              <td>{{ i.scorer }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- For Basic Operations (Add goal, yellow card, red card) -->
+  <div class="row mt-4">
+    <p class="fs-4 p-0">Basic Operations</p>
+    <div class="col-12 p-0">
+      <div class="row">
+        <div class="col-3">
+          <select class="form-select" (change)="onOperationChange($event)">
+            <option value="">Select operation</option>
+            <option value="1">Add goal</option>
+            <option value="2">Add yellow card</option>
+            <option value="3">Add red card</option>
+          </select>
+        </div>
+
+        <div class="col-3">
+          <select
+            class="form-select"
+            (change)="onChangeTeam($event)"
+            [disabled]="dTeamSelection"
+            [(ngModel)]="defaultTeam.value"
+          >
+            <option value="0">Select team</option>
+            <option value="1">{{ this.res.team1.name }}</option>
+            <option value="2">{{ this.res.team2.name }}</option>
+          </select>
+        </div>
+
+        <div class="col-3">
+          <select
+            class="form-select"
+            (change)="onPlayerChange($event)"
+            [disabled]="dPlayerSelection"
+            [(ngModel)]="defaultPlayer.value"
+          >
+            <option value="0">Select Player</option>
+            <option *ngFor="let p of players" value="{{ p }}">
+              {{ p }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Minute"
+            min="1"
+            [disabled]="tMinute"
+            (input)="onMinuteChange($event)"
+            [(ngModel)]="min"
+          />
+        </div>
+
+        <div class="col-12 d-flex justify-content-center mt-5">
+          <input
+            type="submit"
+            class="btn btn-primary"
+            value="Submit"
+            [disabled]="btnSubmit"
+            (click)="onSubmit()"
+          />
+          <input
+            type="submit"
+            class="btn btn-danger mx-2"
+            value="Undo Goal"
+            [disabled]="btnUndoGoal"
+            (click)="undoGoal()"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- For Substitution -->
+  <div class="row mt-4 mb-4">
+    <p class="fs-4 p-0">Substitution</p>
+    <div class="col-12 p-0">
+      <div class="row">
+        <div class="col-3">
+          <select class="form-select" (change)="onChangeTeam_Subs($event)">
+            <option value="">Select Team</option>
+            <option value="1">{{ this.res.team1.name }}</option>
+            <option value="2">{{ this.res.team2.name }}</option>
+          </select>
+        </div>
+
+        <div class="col-3">
+          <select
+            class="form-select"
+            (change)="onChangePlayer_Subs($event)"
+            [(ngModel)]="defaultPlayer_Subs.value"
+            [disabled]="dPlayerSelection_Subs"
+          >
+            <option value="0">Select Player To Substitute</option>
+            <option *ngFor="let p of players_subs" value="{{ p }}">
+              {{ p }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-3">
+          <select
+            class="form-select"
+            (change)="onChangeSubstitution_Subs($event)"
+            [(ngModel)]="defaultSubstitution_Subs.value"
+            [disabled]="dSubsSelection_Subs"
+          >
+            <option value="0">Select Player From Bench</option>
+            <option *ngFor="let s of subs" value="{{ s }}">
+              {{ s }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-3">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Minute"
+            [(ngModel)]="min_subs"
+            (input)="onMinuteChange_Subs()"
+            [disabled]="tMinute_Subs"
+            min="1"
+          />
+        </div>
+
+        <div class="col-12 d-flex justify-content-center mt-5">
+          <input
+            type="submit"
+            class="btn btn-primary"
+            value="Substitute"
+            (click)="onSubmit_Subs()"
+            [disabled]="btnSubs"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
