@@ -1,5 +1,5 @@
 <div class="container-fluid mt-3 mb-5">
-  <p class="h3" style="font-weight: bold">Create Football Match</p>
+  <p class="h3" style="font-weight: bold">Create Volleyball Match</p>
   <p class="h5" style="font-weight: normal">
     Enter the details of the match in below forms
   </p>
@@ -27,7 +27,7 @@
         <div class="accordion-body">
           <form [formGroup]="matchForm">
             <div class="row">
-              <div class="col-4">
+              <div class="col-6">
                 <label for="title" class="form-label">Title</label>
                 <input
                   type="text"
@@ -46,17 +46,6 @@
                   formControlName="start_time"
                 />
 
-                <label for="game_time" class="form-label">Game Time</label>
-                <input
-                  type="number"
-                  class="form-control mb-3"
-                  name="game_time"
-                  autocomplete="off"
-                  formControlName="game_time"
-                />
-              </div>
-
-              <div class="col-4">
                 <label for="title" class="form-label">Date</label>
                 <input
                   type="date"
@@ -65,7 +54,9 @@
                   autocomplete="off"
                   formControlName="date"
                 />
+              </div>
 
+              <div class="col-6">
                 <label for="city" class="form-label">City</label>
                 <input
                   type="text"
@@ -84,26 +75,13 @@
                   formControlName="venue"
                 />
               </div>
-
-              <div class="col-4">
-                <label for="no_of_substitutes" class="form-label"
-                  >No of substitute</label
-                >
-                <input
-                  type="number"
-                  class="form-control mb-3"
-                  name="no_of_substitutes"
-                  autocomplete="off"
-                  formControlName="no_of_substitutes"
-                />
-              </div>
             </div>
             <!-- <input
-              type="submit"
-              class="btn btn-primary"
-              value="Save"
-              [disabled]="matchForm.invalid"
-            /> -->
+                type="submit"
+                class="btn btn-primary"
+                value="Save"
+                [disabled]="matchForm.invalid"
+              /> -->
           </form>
         </div>
       </div>
@@ -260,41 +238,14 @@
                   autocomplete="off"
                   formControlName="player12"
                 />
-
-                <label for="player13" class="form-label">Player 13</label>
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  name="player13"
-                  autocomplete="off"
-                  formControlName="player13"
-                />
-
-                <label for="player14" class="form-label">Player 14</label>
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  name="player14"
-                  autocomplete="off"
-                  formControlName="player14"
-                />
-
-                <label for="player15" class="form-label">Player 15</label>
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  name="player15"
-                  autocomplete="off"
-                  formControlName="player15"
-                />
               </div>
             </div>
             <!-- <input
-              type="submit"
-              class="btn btn-primary"
-              value="Save"
-              [disabled]="team1Form.invalid"
-            /> -->
+                type="submit"
+                class="btn btn-primary"
+                value="Save"
+                [disabled]="team1Form.invalid"
+              /> -->
           </form>
         </div>
       </div>
@@ -451,41 +402,14 @@
                   autocomplete="off"
                   formControlName="player12"
                 />
-
-                <label for="player13" class="form-label">Player 13</label>
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  name="player13"
-                  autocomplete="off"
-                  formControlName="player13"
-                />
-
-                <label for="player14" class="form-label">Player 14</label>
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  name="player14"
-                  autocomplete="off"
-                  formControlName="player14"
-                />
-
-                <label for="player15" class="form-label">Player 15</label>
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  name="player15"
-                  autocomplete="off"
-                  formControlName="player15"
-                />
               </div>
             </div>
             <!-- <input
-              type="submit"
-              class="btn btn-primary"
-              value="Save"
-              [disabled]="team2Form.invalid"
-            /> -->
+                type="submit"
+                class="btn btn-primary"
+                value="Save"
+                [disabled]="team2Form.invalid"
+              /> -->
           </form>
         </div>
       </div>

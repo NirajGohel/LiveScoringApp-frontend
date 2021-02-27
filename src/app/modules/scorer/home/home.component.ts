@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ScorerService } from '../../../services/scorer.service';
 import { FootballService } from '../../../services/football.service';
+import { VolleyballService } from '../../../services/volleyball.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,18 @@ import { FootballService } from '../../../services/football.service';
 export class HomeComponent implements OnInit {
   constructor(
     private Scorer: ScorerService,
-    private Football: FootballService
+    private Football: FootballService,
+    private Volleyball: VolleyballService
   ) {}
 
   public username;
   public res;
+
   public fbmatches;
   public fbcount = 0;
+
+  public vbmatches;
+  public vbcount = 0;
 
   ngOnInit(): void {
     this.Scorer.getScorer(localStorage.getItem('id')).subscribe(
@@ -37,10 +43,31 @@ export class HomeComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+
+    this.Volleyball.getAllScorerMatches(localStorage.getItem('id')).subscribe(
+      (data) => {
+        this.vbmatches = data;
+
+        for (let m of this.vbmatches) {
+          if (m.status == 'not_started') this.vbcount++;
+        }
+      },
+      (error) => console.log(error)
+    );
   }
 
   delete(id) {
     this.Football.deleteMatch(id).subscribe(
+      () => {
+        window.location.reload();
+        alert(`Match deleted successfuly`);
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  deleteVolleyball(id) {
+    this.Volleyball.deleteMatch(id).subscribe(
       () => {
         window.location.reload();
         alert(`Match deleted successfuly`);

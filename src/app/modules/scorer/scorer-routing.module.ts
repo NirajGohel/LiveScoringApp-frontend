@@ -23,6 +23,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../football/football.module').then((m) => m.FootballModule),
   },
+  {
+    path: 'volleyball',
+    loadChildren: () =>
+      import('../volleyball/volleyball.module').then((m) => m.VolleyballModule),
+  },
 ];
 
 @NgModule({

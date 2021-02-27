@@ -62,7 +62,7 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let m of fbmatches">
+          <tr *ngFor="let m of vbmatches">
             <ng-template [ngIf]="m.status == 'not_started'">
               <td>{{ m.title }}</td>
               <td>{{ m.team1.name }}</td>
@@ -71,13 +71,15 @@
               <td>{{ m.start_time }}</td>
               <td><a routerLink="/football/start/{{ m._id }}">Start</a></td>
               <td>
-                <a routerLink="/scorer/dashboard" (click)="delete(m._id)"
+                <a
+                  routerLink="/scorer/dashboard"
+                  (click)="deleteVolleyball(m._id)"
                   >Delete</a
                 >
               </td>
             </ng-template>
           </tr>
-          <tr *ngIf="fbcount == 0">
+          <tr *ngIf="vbcount == 0">
             <td colspan="7" class="text-center">No upcoming matches</td>
           </tr>
         </tbody>

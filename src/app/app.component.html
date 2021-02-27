@@ -1,16 +1,25 @@
 <!-- Do not show this to scorer and admin. This is only for viewer(fans) -->
 <navbar
-  *ngIf="!router.url.includes('dashboard') && !router.url.includes('football')"
+  *ngIf="
+    !router.url.includes('dashboard') &&
+    !router.url.includes('football') &&
+    !router.url.includes('volleyball')
+  "
 ></navbar>
 <footer
-  *ngIf="!router.url.includes('dashboard') && !router.url.includes('football')"
+  *ngIf="
+    !router.url.includes('dashboard') &&
+    !router.url.includes('football') &&
+    !router.url.includes('volleyball')
+  "
 ></footer>
 
 <!-- Show this to scorer only -->
 <scorer-dashboard
   *ngIf="
     (router.url.includes('dashboard') && router.url.includes('scorer')) ||
-    router.url.includes('football')
+    router.url.includes('football') ||
+    router.url.includes('volleyball')
   "
 >
 </scorer-dashboard>
