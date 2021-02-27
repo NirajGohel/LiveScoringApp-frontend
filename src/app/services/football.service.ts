@@ -47,4 +47,24 @@ export class FootballService {
   addYellowCard(data) {
     return this.http.put(`${this.baseUrl}/addyellowcard`, data);
   }
+
+  addRedCard(data) {
+    return this.http.put(`${this.baseUrl}/addredcard`, data);
+  }
+
+  substitute(data) {
+    return this.http.put(`${this.baseUrl}/substitute`, data);
+  }
+
+  halfTime(data) {
+    return this.http.put(`${this.baseUrl}/halftime`, data);
+  }
+
+  startSecondHalf(data) {
+    return this.http.put(`${this.baseUrl}/startsecondhalf`, data);
+  }
+
+  finishMatch(data) {
+    return this.http.put(`${this.baseUrl}/finish`, data);
+  }
 }

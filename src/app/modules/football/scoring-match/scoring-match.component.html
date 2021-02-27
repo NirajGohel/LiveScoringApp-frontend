@@ -8,116 +8,102 @@
         <p class="h1 px-4">{{ this.team2_score }}</p>
         <p class="fs-5 p-2">{{ this.res.team2.name }}</p>
       </div>
+
       <p class="fs-5 text-center text-success">{{ this.minute }}</p>
+      <div class="d-flex justify-content-center mb-3">
+        <ng-template [ngIf]="this.res.half == 1">
+          <input
+            type="submit"
+            class="btn btn-primary mx-2"
+            value="Half time"
+            (click)="halfTime()"
+          />
+        </ng-template>
 
-      <div>
-        <p class="fs-5">{{ this.res.team1.name }}</p>
-        <p>Goals</p>
+        <ng-template [ngIf]="this.res.half == 2">
+          <input
+            type="submit"
+            class="btn btn-primary mx-2"
+            value="Finish Match"
+            (click)="finishMatch()"
+          />
+        </ng-template>
 
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Minute</th>
-              <th>Player name</th>
-            </tr>
-          </thead>
+        <ng-template [ngIf]="this.res.half == 3">
+          <input
+            type="submit"
+            class="btn btn-primary mx-2"
+            value="Start Second Half"
+            (click)="startSecondHalf()"
+          />
+        </ng-template>
 
-          <tbody>
-            <tr *ngFor="let i of t1_goals">
-              <td>{{ i.time }}</td>
-              <td>{{ i.scorer }}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="fs-5">{{ this.res.team2.name }}</p>
-        <p>Goals</p>
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Minute</th>
-              <th scope="col">Player name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let i of t2_goals">
-              <td>{{ i.time }}</td>
-              <td>{{ i.scorer }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <input
+          type="submit"
+          class="btn btn-danger mx-2"
+          value="Undo Goal"
+          [disabled]="btnUndoGoal"
+          (click)="undoGoal()"
+        />
       </div>
     </div>
   </div>
 
   <!-- For Basic Operations (Add goal, yellow card, red card) -->
   <div class="row mt-4">
-    <p class="fs-4 p-0">Basic Operations</p>
     <div class="col-12 p-0">
       <div class="row">
-        <div class="col-3">
-          <select class="form-select" (change)="onOperationChange($event)">
-            <option value="">Select operation</option>
-            <option value="1">Add goal</option>
-            <option value="2">Add yellow card</option>
-            <option value="3">Add red card</option>
-          </select>
-        </div>
-
-        <div class="col-3">
-          <select
-            class="form-select"
-            (change)="onChangeTeam($event)"
-            [disabled]="dTeamSelection"
-            [(ngModel)]="defaultTeam.value"
-          >
-            <option value="0">Select team</option>
-            <option value="1">{{ this.res.team1.name }}</option>
-            <option value="2">{{ this.res.team2.name }}</option>
-          </select>
-        </div>
-
-        <div class="col-3">
+        <div class="col-6">
+          <p class="fs-4">{{ this.res.team1.name }}</p>
           <select
             class="form-select"
             (change)="onPlayerChange($event)"
-            [disabled]="dPlayerSelection"
             [(ngModel)]="defaultPlayer.value"
           >
             <option value="0">Select Player</option>
-            <option *ngFor="let p of players" value="{{ p }}">
+            <option *ngFor="let p of this.res.team1.playing11" value="{{ p }}">
               {{ p }}
             </option>
           </select>
         </div>
 
-        <div class="col-3">
-          <input
-            type="number"
-            class="form-control"
-            placeholder="Minute"
-            min="1"
-            [disabled]="tMinute"
-            (input)="onMinuteChange($event)"
-            [(ngModel)]="min"
-          />
+        <div class="col-6">
+          <p class="fs-4">{{ this.res.team2.name }}</p>
+          <select
+            class="form-select"
+            (change)="onPlayerChange($event)"
+            [(ngModel)]="defaultPlayer.value"
+          >
+            <option value="0">Select Player</option>
+            <option *ngFor="let p of this.res.team2.playing11" value="{{ p }}">
+              {{ p }}
+            </option>
+          </select>
         </div>
 
         <div class="col-12 d-flex justify-content-center mt-5">
           <input
             type="submit"
-            class="btn btn-primary"
-            value="Submit"
+            class="btn btn-primary mx-2"
+            value="Add Goal"
             [disabled]="btnSubmit"
-            (click)="onSubmit()"
+            (click)="addGoal()"
           />
+
           <input
             type="submit"
-            class="btn btn-danger mx-2"
-            value="Undo Goal"
-            [disabled]="btnUndoGoal"
-            (click)="undoGoal()"
+            class="btn btn-primary mx-2"
+            value="Add Yellow Card"
+            [disabled]="btnSubmit"
+            (click)="addYellowCard()"
+          />
+
+          <input
+            type="submit"
+            class="btn btn-primary mx-2"
+            value="Add Red Card"
+            [disabled]="btnSubmit"
+            (click)="addRedCard()"
           />
         </div>
       </div>
@@ -129,7 +115,7 @@
     <p class="fs-4 p-0">Substitution</p>
     <div class="col-12 p-0">
       <div class="row">
-        <div class="col-3">
+        <div class="col-4">
           <select class="form-select" (change)="onChangeTeam_Subs($event)">
             <option value="">Select Team</option>
             <option value="1">{{ this.res.team1.name }}</option>
@@ -137,7 +123,7 @@
           </select>
         </div>
 
-        <div class="col-3">
+        <div class="col-4">
           <select
             class="form-select"
             (change)="onChangePlayer_Subs($event)"
@@ -151,7 +137,7 @@
           </select>
         </div>
 
-        <div class="col-3">
+        <div class="col-4">
           <select
             class="form-select"
             (change)="onChangeSubstitution_Subs($event)"
@@ -165,7 +151,7 @@
           </select>
         </div>
 
-        <div class="col-3">
+        <!-- <div class="col-3">
           <input
             type="number"
             class="form-control"
@@ -175,7 +161,7 @@
             [disabled]="tMinute_Subs"
             min="1"
           />
-        </div>
+        </div> -->
 
         <div class="col-12 d-flex justify-content-center mt-5">
           <input

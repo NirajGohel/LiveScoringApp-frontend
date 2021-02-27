@@ -2,9 +2,12 @@
   <img src="{{ game.path }}" class="card-img-top" alt="" />
   <div class="card-body">
     <h5 class="card-title text-center">
-      <a href="" class="btn btn-primary" style="font-size: 1.1rem">{{
-        game.name
-      }}</a>
+      <a
+        routerLink="/{{ game.name | lowercase }}"
+        class="btn btn-primary"
+        style="font-size: 1.1rem"
+        >{{ game.name }}</a
+      >
     </h5>
   </div>
 </div>

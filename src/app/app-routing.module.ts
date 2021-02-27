@@ -21,7 +21,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
-  { path: 'football', loadChildren: () => import('./modules/football/football.module').then(m => m.FootballModule) },
+  {
+    path: 'football',
+    loadChildren: () =>
+      import('./modules/football/football.module').then(
+        (m) => m.FootballModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   public username;
   public res;
-  public matches;
+  public fbmatches;
+  public fbcount = 0;
 
   ngOnInit(): void {
     this.Scorer.getScorer(localStorage.getItem('id')).subscribe(
@@ -28,7 +29,11 @@ export class HomeComponent implements OnInit {
 
     this.Football.getAllScorerMatches(localStorage.getItem('id')).subscribe(
       (data) => {
-        this.matches = data;
+        this.fbmatches = data;
+
+        for (let m of this.fbmatches) {
+          if (m.status == 'not_started') this.fbcount++;
+        }
       },
       (error) => console.log(error)
     );

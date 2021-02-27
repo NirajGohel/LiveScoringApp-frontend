@@ -51,8 +51,11 @@ export class ScoringMatchComponent implements OnInit {
   //basic opearation - add goal
   private scorer;
   private time;
-  private teamname;
   private opearation;
+
+  //same for both the teams
+  private playername;
+  private teamname;
 
   //basic opearation - add yellow card
   private yellowCardPlayer;
@@ -117,11 +120,12 @@ export class ScoringMatchComponent implements OnInit {
             this.serverDate = data;
             let diffMs =
               Date.parse(this.matchDate) - Date.parse(this.serverDate); // milliseconds between match date & server date
-            let diffMins = Math.abs(
-              Math.round(((diffMs % 86400000) % 3600000) / 60000)
-            ); // minutes
+            let diffMins = Math.abs(Math.round(diffMs / 60000)); // minutes
 
-            this.minute = diffMins;
+            if (this.res.half == 1) this.minute = diffMins;
+            else if (this.res.half == 2)
+              this.minute = diffMins + this.res.game_time / 2;
+            else this.minute = 'Half Time';
           },
           (error) => {
             console.log(error);
@@ -175,19 +179,16 @@ export class ScoringMatchComponent implements OnInit {
   }
 
   onPlayerChange($event) {
-    if (this.opearation == 1)
-      this.scorer =
+    if ($event.target.options[$event.target.options.selectedIndex].value != 0) {
+      this.playername =
         $event.target.options[$event.target.options.selectedIndex].value;
 
-    if (this.opearation == 2)
-      this.yellowCardPlayer =
-        $event.target.options[$event.target.options.selectedIndex].value;
-    this.tMinute = false;
-  }
+      if (this.res.team1.playing11.includes(this.playername))
+        this.teamname = this.res.team1.name;
+      else this.teamname = this.res.team2.name;
 
-  onMinuteChange($event) {
-    this.time = this.min;
-    this.btnSubmit = false;
+      this.btnSubmit = false;
+    }
   }
 
   onSubmit() {
@@ -225,6 +226,60 @@ export class ScoringMatchComponent implements OnInit {
 
       console.log(data);
     }
+  }
+
+  addGoal() {
+    const data = {
+      _id: this.route.snapshot.paramMap.get('id'),
+      scorer: this.playername,
+      time: this.minute,
+      teamname: this.teamname,
+    };
+
+    this.Football.addGoal(data).subscribe(
+      () => {
+        this.doReset();
+        this.btnUndoGoal = false;
+
+        if (this.teamname == this.res.team1.name) this.team1_score++;
+        else this.team2_score++;
+
+        window.location.reload();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  addYellowCard() {
+    const data = {
+      _id: this.route.snapshot.paramMap.get('id'),
+      player: this.playername,
+      time: this.minute,
+      teamname: this.teamname,
+    };
+
+    this.Football.addYellowCard(data).subscribe(
+      () => {
+        window.location.reload();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  addRedCard() {
+    const data = {
+      _id: this.route.snapshot.paramMap.get('id'),
+      player: this.playername,
+      time: this.minute,
+      teamname: this.teamname,
+    };
+
+    this.Football.addRedCard(data).subscribe(
+      () => {
+        window.location.reload();
+      },
+      (error) => console.log(error)
+    );
   }
 
   undoGoal() {
@@ -265,10 +320,6 @@ export class ScoringMatchComponent implements OnInit {
 
   onChangeSubstitution_Subs($event) {
     this.in = $event.target.options[$event.target.options.selectedIndex].value;
-    this.tMinute_Subs = false;
-  }
-
-  onMinuteChange_Subs() {
     this.btnSubs = false;
   }
 
@@ -278,9 +329,56 @@ export class ScoringMatchComponent implements OnInit {
       teamname: this.teamname_subs,
       in: this.in,
       out: this.out,
-      time: this.min_subs,
+      time: this.minute,
     };
 
-    console.log(data);
+    this.Football.substitute(data).subscribe(
+      () => {
+        window.location.reload();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  halfTime() {
+    const data = {
+      _id: this.route.snapshot.paramMap.get('id'),
+    };
+
+    this.Football.halfTime(data).subscribe(
+      () => {
+        alert('1');
+        window.location.reload();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  startSecondHalf() {
+    const data = {
+      _id: this.route.snapshot.paramMap.get('id'),
+    };
+
+    this.Football.startSecondHalf(data).subscribe(
+      () => window.location.reload(),
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  finishMatch() {
+    const data = {
+      _id: this.route.snapshot.paramMap.get('id'),
+    };
+
+    this.Football.finishMatch(data).subscribe(
+      () => this.router.navigate(['/scorer/dashboard/home']),
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
