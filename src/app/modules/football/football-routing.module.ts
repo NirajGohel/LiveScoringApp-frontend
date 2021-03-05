@@ -7,7 +7,7 @@ import { StartMatchComponent } from './start-match/start-match.component';
 import { ScoringMatchComponent } from './scoring-match/scoring-match.component';
 
 const routes: Routes = [
-  { path: '', component: FootballComponent },
+  { path: 'view', component: FootballComponent },
   { path: 'create', component: CreateMatchComponent },
   { path: 'start/:id', component: StartMatchComponent },
   { path: 'scoring/:id', component: ScoringMatchComponent },

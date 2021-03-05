@@ -1,0 +1,125 @@
+<div class="container-fluid">
+  <div class="row mt-4">
+    <div class="col-12 card">
+      <div class="d-flex justify-content-center">
+        <span class="fs-5 my-2">{{ this.res.team1.name }}</span>
+        <span class="h1 mx-4">{{
+          this.res.score.team1.points[
+            this.res.score.team1.set + this.res.score.team2.set
+          ]
+        }}</span>
+        <span class="fs-5 my-2">-</span>
+        <!-- <span class="fs-5 my-2" style="transform: rotate(90deg)">|</span> -->
+        <span class="h1 mx-4">{{
+          this.res.score.team2.points[
+            this.res.score.team1.set + this.res.score.team2.set
+          ]
+        }}</span>
+        <span class="fs-5 my-2">{{ this.res.team2.name }}</span>
+      </div>
+
+      <p
+        class="fs-5 text-center text-info"
+        *ngIf="this.res.status != 'finished'"
+      >
+        Set : {{ this.res.score.team1.set + this.res.score.team2.set + 1 }}
+      </p>
+
+      <div class="d-flex justify-content-center mb-3">
+        <div
+          *ngIf="this.res.status == 'finished'; then thenBlock; else elseblock"
+        ></div>
+        <ng-template #thenBlock>
+          <input
+            type="submit"
+            class="btn btn-primary mx-2"
+            value="Finish Match"
+            (click)="finishMatch()"
+          />
+        </ng-template>
+
+        <ng-template #elseblock>
+          <input
+            type="submit"
+            class="btn btn-primary mx-2"
+            value="Finish Set"
+            [disabled]="btnNewSet"
+            (click)="finishSet()"
+          />
+        </ng-template>
+
+        <input
+          type="submit"
+          class="btn btn-danger mx-2"
+          value="Undo Point"
+          [disabled]="btnUndoPoint"
+          (click)="undoPoint()"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 p-0">
+      <div class="row">
+        <div class="col-6 text-center">
+          <p class="fs-4">{{ this.res.team1.name }}</p>
+
+          <div class="text-center">
+            <input
+              type="submit"
+              class="btn btn-primary mx-2"
+              value="Add Point"
+              [disabled]="btnAddPoint"
+              (click)="addPoint(this.res.team1.name)"
+            />
+          </div>
+        </div>
+        <div class="col-6 text-center">
+          <p class="fs-4">{{ this.res.team2.name }}</p>
+
+          <div class="text-center">
+            <input
+              type="submit"
+              class="btn btn-primary mx-2"
+              value="Add Point"
+              [disabled]="btnAddPoint"
+              (click)="addPoint(this.res.team2.name)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 text-center">
+    <p class="fs-4">Scorecard</p>
+
+    <table class="table table-striped table-info">
+      <thead>
+        <tr>
+          <th>Teamname</th>
+          <th *ngFor="let j of this.res.score.team1.points; let i = index">
+            Set {{ i + 1 }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{ this.res.team1.name }}</td>
+          <td *ngFor="let j of this.res.score.team1.points">
+            {{ j }}
+          </td>
+        </tr>
+
+        <tr>
+          <td>{{ this.res.team2.name }}</td>
+          <td *ngFor="let j of this.res.score.team2.points">
+            {{ j }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

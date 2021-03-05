@@ -69,7 +69,13 @@
               <td>{{ m.team2.name }}</td>
               <td>{{ m.date | date: "mediumDate" }}</td>
               <td>{{ m.start_time }}</td>
-              <td><a routerLink="/football/start/{{ m._id }}">Start</a></td>
+              <td>
+                <a
+                  routerLink="/scorer/dashboard"
+                  (click)="startVolleyball(m._id)"
+                  >Start</a
+                >
+              </td>
               <td>
                 <a
                   routerLink="/scorer/dashboard"

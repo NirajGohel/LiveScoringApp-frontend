@@ -65,7 +65,7 @@ export class CreateMatchComponent implements OnInit {
     this.data.scorer_id = localStorage.getItem('id');
 
     //Player List of Team 1
-    for (let i = 1; i <= 15; i++) {
+    for (let i = 1; i <= 12; i++) {
       this.str = `player${i}`;
       this.team1_players.push(this.team1Form.value[this.str]);
     }
@@ -78,7 +78,7 @@ export class CreateMatchComponent implements OnInit {
     };
 
     //Player List of Team 2
-    for (let i = 1; i <= 15; i++) {
+    for (let i = 1; i <= 12; i++) {
       this.str = `player${i}`;
       this.team2_players.push(this.team2Form.value[this.str]);
     }

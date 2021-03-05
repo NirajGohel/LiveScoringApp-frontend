@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScorerService } from '../../../services/scorer.service';
 import { FootballService } from '../../../services/football.service';
 import { VolleyballService } from '../../../services/volleyball.service';
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private Scorer: ScorerService,
     private Football: FootballService,
-    private Volleyball: VolleyballService
+    private Volleyball: VolleyballService,
+    private router: Router
   ) {}
 
   public username;
@@ -71,6 +73,19 @@ export class HomeComponent implements OnInit {
       () => {
         window.location.reload();
         alert(`Match deleted successfuly`);
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  startVolleyball(id) {
+    const data = {
+      _id: id,
+    };
+
+    this.Volleyball.startMatch(data).subscribe(
+      (data) => {
+        this.router.navigate([`/volleyball/scoring/${id}`]);
       },
       (error) => console.log(error)
     );

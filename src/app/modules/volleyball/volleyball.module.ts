@@ -5,9 +5,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { VolleyballRoutingModule } from './volleyball-routing.module';
 import { VolleyballComponent } from './volleyball.component';
 import { CreateMatchComponent } from './create-match/create-match.component';
+import { ScoringMatchComponent } from './scoring-match/scoring-match.component';
 
 @NgModule({
-  declarations: [VolleyballComponent, CreateMatchComponent],
+  declarations: [VolleyballComponent, CreateMatchComponent, ScoringMatchComponent],
   imports: [
     CommonModule,
     VolleyballRoutingModule,

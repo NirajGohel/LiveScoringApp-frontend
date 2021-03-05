@@ -26,4 +26,24 @@ export class VolleyballService {
   getAllScorerMatches(id) {
     return this.http.get(`${this.baseUrl}/getmatchesByscorer/${id}`);
   }
+
+  startMatch(id) {
+    return this.http.put(`${this.baseUrl}/startgame`, id);
+  }
+
+  addPoint(data) {
+    return this.http.put(`${this.baseUrl}/addpoint`, data);
+  }
+
+  undoPoint(data) {
+    return this.http.put(`${this.baseUrl}/undopoint`, data);
+  }
+
+  finishSet(data) {
+    return this.http.put(`${this.baseUrl}/finishset`, data);
+  }
+
+  finishMatch(data) {
+    return this.http.put(`${this.baseUrl}/finish`, data);
+  }
 }
