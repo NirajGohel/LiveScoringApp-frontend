@@ -17,11 +17,12 @@ export class VolleyballComponent implements OnInit {
   };
 
   public matches;
-
+  
   public flag = 'all';
 
   ngOnInit(): void {
     this.getAllMatches();
+
   }
 
   setState(e) {

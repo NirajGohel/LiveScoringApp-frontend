@@ -35,25 +35,26 @@
   </div>
 </div>
 
-<div class="container">
+ <div class="container">
   <div class="row">
-    <div class="col-4" *ngFor="let m of matches">
-      <div *ngIf="this.flag == 'all' || this.flag == m.status">
+  <ng-container *ngFor="let m of matches">
+    <div class="col-4" *ngIf="this.flag == 'all' || this.flag == m.status">
         <div class="card mb-4">
           <div class="card-body">
             <h5 class="h5 card-title">{{ m.title }}</h5>
             <h6 class="h6 card-subtitle mb-2 text-success">
               {{ m.status }} - {{ m.city }}
             </h6>
-
             <div class="my-4">
               <h5 class="h5">{{ m.team1.name }} - {{ m.score.team1.set }}</h5>
               <h5 class="h5">{{ m.team2.name }} - {{ m.score.team2.set }}</h5>
             </div>
             <a href="#" class="card-link">View</a>
-          </div>
+          </div>   
+        </div>   
         </div>
+        </ng-container>
       </div>
-    </div>
   </div>
-</div>
+ 
+
