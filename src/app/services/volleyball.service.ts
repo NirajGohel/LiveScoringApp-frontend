@@ -46,4 +46,9 @@ export class VolleyballService {
   finishMatch(data) {
     return this.http.put(`${this.baseUrl}/finish`, data);
   }
+
+  //Methos For Viewers
+  getAllMatches() {
+    return this.http.get(`${this.baseUrl}/getallmatches`);
+  }
 }

@@ -1,1 +1,59 @@
-<p style="margin-top: 5%">volleyball works!</p>
+<div class="container" style="margin-top: 7rem">
+  <p class="fs-4">Volleyball Matches</p>
+
+  <div class="btn-group mb-4" id="filter">
+    <a
+      class="btn btn-primary"
+      aria-current="page"
+      id="all"
+      (click)="setState($event)"
+      [class.active]="this.state.all"
+      (click)="getAllMatches()"
+      >All</a
+    >
+    <a
+      class="btn btn-primary"
+      id="live"
+      (click)="setState($event)"
+      [class.active]="this.state.live"
+      >Live</a
+    >
+    <a
+      class="btn btn-primary"
+      id="finished"
+      (click)="setState($event)"
+      [class.active]="this.state.finished"
+      >Finished</a
+    >
+    <a
+      class="btn btn-primary"
+      id="upcoming"
+      (click)="setState($event)"
+      [class.active]="this.state.upcoming"
+      >Upcoming</a
+    >
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let m of matches">
+      <div *ngIf="this.flag == 'all' || this.flag == m.status">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="h5 card-title">{{ m.title }}</h5>
+            <h6 class="h6 card-subtitle mb-2 text-success">
+              {{ m.status }} - {{ m.city }}
+            </h6>
+
+            <div class="my-4">
+              <h5 class="h5">{{ m.team1.name }} - {{ m.score.team1.set }}</h5>
+              <h5 class="h5">{{ m.team2.name }} - {{ m.score.team2.set }}</h5>
+            </div>
+            <a href="#" class="card-link">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
