@@ -6,9 +6,10 @@ import { VolleyballRoutingModule } from './volleyball-routing.module';
 import { VolleyballComponent } from './volleyball.component';
 import { CreateMatchComponent } from './create-match/create-match.component';
 import { ScoringMatchComponent } from './scoring-match/scoring-match.component';
+import { ViewMatchComponent } from './view-match/view-match.component';
 
 @NgModule({
-  declarations: [VolleyballComponent, CreateMatchComponent, ScoringMatchComponent],
+  declarations: [VolleyballComponent, CreateMatchComponent, ScoringMatchComponent, ViewMatchComponent],
   imports: [
     CommonModule,
     VolleyballRoutingModule,
