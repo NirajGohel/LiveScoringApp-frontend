@@ -40,11 +40,11 @@ export class ScoringMatchComponent implements OnInit {
         if (
           (this.res.score.team1.points[index] >= 25 &&
             this.res.score.team1.points[index] -
-              this.res.score.team2.points[index] ==
+              this.res.score.team2.points[index] >=
               2) ||
           (this.res.score.team2.points[index] >= 25 &&
             this.res.score.team2.points[index] -
-              this.res.score.team1.points[index] ==
+              this.res.score.team1.points[index] >=
               2)
         )
           this.btnNewSet = false;
