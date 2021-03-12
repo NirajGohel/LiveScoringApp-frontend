@@ -17,10 +17,6 @@ export class HomeComponent implements OnInit {
       name: 'Volleyball',
       path: '../assets/images/volleyball.jpg',
     },
-    {
-      name: 'Cricket',
-      path: '../assets/images/football2.jpg',
-    },
   ];
 
   ngOnInit(): void {}

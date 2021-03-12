@@ -5,9 +5,11 @@ import { FootballComponent } from './football.component';
 import { CreateMatchComponent } from './create-match/create-match.component';
 import { StartMatchComponent } from './start-match/start-match.component';
 import { ScoringMatchComponent } from './scoring-match/scoring-match.component';
+import { ViewMatchComponent } from './view-match/view-match.component';
 
 const routes: Routes = [
   { path: 'view', component: FootballComponent },
+  { path: 'view/:id', component: ViewMatchComponent },
   { path: 'create', component: CreateMatchComponent },
   { path: 'start/:id', component: StartMatchComponent },
   { path: 'scoring/:id', component: ScoringMatchComponent },
