@@ -1,0 +1,171 @@
+<div class="container" style="margin-top: 7rem">
+  <p class="h4">{{ res.title }}</p>
+  <p class="text-muted fs-6">
+    Football | {{ res.date | date: "mediumDate" }} | {{ res.start_time }} at
+    {{ res.city }}, {{ res.venue }}
+  </p>
+
+  <div class="row mt-4">
+    <div class="col-12 card">
+      <div class="d-flex justify-content-center">
+        <span class="fs-5 my-2">{{ this.res.team1.name }}</span>
+        <span class="h1 mx-4">{{ this.res.score.team1.goal }}</span>
+        <span class="fs-5 my-2">-</span>
+        <!-- <span class="fs-5 my-2" style="transform: rotate(90deg)">|</span> -->
+        <span class="h1 mx-4">{{ this.res.score.team2.goal }}</span>
+        <span class="fs-5 my-2">{{ this.res.team2.name }}</span>
+      </div>
+
+      <p class="fs-6 text-center text-muted">
+        {{ res.status }}
+      </p>
+      <p
+        class="fs-5 text-center text-info"
+        *ngIf="this.res.status != 'finished'"
+      >
+        {{ this.minute }}
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <div class="row">
+      <div class="col-5 text-end">
+        <ng-container *ngFor="let p of res.score.team1.scorer; index as i">
+          {{ p
+          }}<span class="badge bg-primary ms-1">{{
+            res.score.team1.times[i]
+          }}</span>
+          <br />
+        </ng-container>
+      </div>
+      <div class="col-2 text-center">
+        <img
+          src="../../../../assets/images/football2.svg"
+          alt=""
+          style="height: 50px; width: 50px"
+        />
+      </div>
+      <div class="col-5">
+        <ng-container *ngFor="let p of res.score.team2.scorer; index as i">
+          {{ p
+          }}<span class="badge bg-primary ms-1">{{
+            res.score.team2.times[i]
+          }}</span>
+          <br />
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-5 text-end">
+        <ng-container
+          *ngFor="let p of res.yellow_card.team1.player; index as i"
+        >
+          {{ p }}
+          <span class="badge bg-primary ms-1">{{
+            res.yellow_card.team1.times[i]
+          }}</span>
+          <br />
+        </ng-container>
+      </div>
+      <div class="col-2 text-center">
+        <img
+          src="../../../../assets/images/yellow-card.svg"
+          alt=""
+          style="height: 50px; width: 50px"
+        />
+      </div>
+      <div class="col-5">
+        <ng-container
+          *ngFor="let p of res.yellow_card.team2.player; index as i"
+        >
+          {{ p }}
+          <span class="badge bg-primary ms-1">{{
+            res.yellow_card.team2.times[i]
+          }}</span>
+          <br />
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-5 text-end">
+      <ng-container *ngFor="let p of res.red_card.team1.player; index as i">
+        {{ p }}
+        <span class="badge bg-primary ms-1">{{
+          res.red_card.team1.times[i]
+        }}</span>
+        <br />
+      </ng-container>
+    </div>
+    <div class="col-2 text-center">
+      <img
+        src="../../../../assets/images/red-card.svg"
+        alt=""
+        style="height: 50px; width: 50px; transform: rotateY(180deg)"
+      />
+    </div>
+    <div class="col-5">
+      <ng-container *ngFor="let p of res.red_card.team2.player; index as i">
+        {{ p }}
+        <span class="badge bg-primary ms-1">{{
+          res.red_card.team2.times[i]
+        }}</span>
+        <br />
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-5 text-end">
+      <ng-container *ngFor="let p of res.substitutions.team1.in; index as i">
+        <span class="text-success">{{ p }}</span>
+        <span class="badge bg-primary ms-1">{{
+          res.substitutions.team1.times[i]
+        }}</span>
+        <br />
+        <span class="text-danger">{{ res.substitutions.team1.out[i] }}</span>
+      </ng-container>
+    </div>
+    <div class="col-2 text-center">
+      <img
+        src="../../../../assets/images/substitute.svg"
+        alt=""
+        style="height: 50px; width: 50px; transform: rotateY(180deg)"
+      />
+    </div>
+    <div class="col-5">
+      <ng-container *ngFor="let p of res.red_card.team2.player; index as i">
+        {{ p }}
+        <span class="badge bg-primary ms-1">{{
+          res.red_card.team2.times[i]
+        }}</span>
+        <br />
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-5 offset-lg-1">
+      <p class="fs-5">{{ res.team1.name }} Playing11</p>
+      <p>{{ res.team1.playing11 }}</p>
+      <p class="fs-5">Bench</p>
+      <p>{{ res.team1.substitutes }}</p>
+      <p>Headcoach: {{ res.team1.headcoach }}</p>
+    </div>
+
+    <div class="col-5 offset-lg-1">
+      <p class="fs-5">{{ res.team2.name }} Playing11</p>
+      <p>{{ res.team2.playing11 }}</p>
+      <p class="fs-5">Bench</p>
+      <p>{{ res.team2.substitutes }}</p>
+      <p>Headcoach: {{ res.team2.headcoach }}</p>
+    </div>
+  </div>
+
+  <div class="text-center mt-2 mb-5">
+    <a routerLink="/football/view">Back</a>
+  </div>
+</div>

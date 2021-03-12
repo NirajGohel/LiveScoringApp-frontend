@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
       this.Scorer.login(this.loginForm.value).subscribe(
         (data) => {
           this.res = data;
-          console.log(data);
-          console.log(this.res.scorer._id);
           localStorage.setItem('id', this.res.scorer._id);
           this.router.navigate(['/scorer/dashboard']);
         },
