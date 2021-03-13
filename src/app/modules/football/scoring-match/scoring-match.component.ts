@@ -347,7 +347,6 @@ export class ScoringMatchComponent implements OnInit {
 
     this.Football.halfTime(data).subscribe(
       () => {
-        alert('1');
         window.location.reload();
       },
       (error) => {

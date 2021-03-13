@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
         this.fbmatches = data;
 
         for (let m of this.fbmatches) {
-          if (m.status == 'not_started') this.fbcount++;
+          if (m.status == 'upcoming') this.fbcount++;
         }
       },
       (error) => console.log(error)

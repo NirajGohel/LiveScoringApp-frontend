@@ -34,10 +34,10 @@ export class SignupComponent implements OnInit {
       this.Scorer.signup(this.signupForm.value).subscribe(
         (data) => {
           this.res = data;
-          console.log(data);
-          console.log(this.res._id);
-          localStorage.setItem('id', this.res._id);
-          this.router.navigate(['/scorer/dashboard']);
+          alert(
+            'You will be able to login once admin  will approve your request'
+          );
+          this.router.navigate(['/scorer/login']);
         },
         (error) => console.log(error)
       );

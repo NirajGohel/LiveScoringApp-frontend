@@ -24,3 +24,8 @@
   "
 >
 </scorer-dashboard>
+
+<!-- Show this to admin only -->
+<admin-dashboard
+  *ngIf="router.url.includes('admin') && router.url.includes('dashboard')"
+></admin-dashboard>

@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { ScorerModule } from './modules/scorer/scorer.module';
 import { FootballModule } from './modules/football/football.module';
+import { AdminModule } from './modules/admin/admin.module';
 // import { VolleyballModule } from './modules/volleyball/volleyball.module';
 
 // import { LoginComponent } from './modules/scorer/login/login.component';
@@ -37,6 +38,7 @@ import { FootballModule } from './modules/football/football.module';
     HttpClientModule,
     ScorerModule,
     FootballModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

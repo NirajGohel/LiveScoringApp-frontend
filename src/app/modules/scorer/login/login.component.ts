@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
         (error) => {
           if (error.status == 422) alert('Password is incorrect');
           if (error.status == 404) alert('User does not exists');
+          if (error.status == 425)
+            alert(
+              'You will be able to login once admin  will approve your request'
+            );
         }
       );
     }

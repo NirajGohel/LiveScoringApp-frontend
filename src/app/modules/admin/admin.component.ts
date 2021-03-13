@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ScorerService } from '../.././services/scorer.service';
+import { AdminService } from '../.././services/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +9,7 @@ import { ScorerService } from '../.././services/scorer.service';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  constructor(private Scorer: ScorerService, private router: Router) {}
+  constructor(private Admin: AdminService, private router: Router) {}
 
   loginForm = new FormGroup({
     email: new FormControl('', [
@@ -22,18 +22,17 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    // if (this.loginForm.valid) {
-    //   this.Scorer.login(this.loginForm.value).subscribe(
-    //     (data) => {
-    //       console.log(data);
-    //       console.log(this.loginForm.value);
-    //       this.router.navigate(['/dashboard']);
-    //     },
-    //     (error) => {
-    //       if (error.status == 422) alert('Password is incorrect');
-    //       if (error.status == 404) alert('User does not exists');
-    //     }
-    //   );
-    // }
+    if (this.loginForm.valid) {
+      this.Admin.login(this.loginForm.value).subscribe(
+        (data) => {
+          console.log(data);
+          this.router.navigate(['/admin/dashboard']);
+        },
+        (error) => {
+          if (error.status == 422) alert('Password is incorrect');
+          if (error.status == 404) alert('User does not exists');
+        }
+      );
+    }
   }
 }

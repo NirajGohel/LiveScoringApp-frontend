@@ -32,4 +32,8 @@ export class ScorerService {
   getScorer(id) {
     return this.http.get(`${this.baseUrl}/getscorer/${id}`);
   }
+
+  getAllScorer() {
+    return this.http.get(`${this.baseUrl}/getallscorers`);
+  }
 }

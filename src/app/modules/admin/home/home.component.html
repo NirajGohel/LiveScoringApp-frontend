@@ -1,0 +1,79 @@
+<div class="container-fluid mt-3">
+  <img
+    src="../../../../assets/images/user.svg"
+    alt=""
+    style="height: 45px; width: 45px"
+  />
+  <span class="h3 ms-lg-3 ms-sm-3" style="font-weight: normal">admin</span>
+
+  <div class="mt-4">
+    <h4 class="h4">Manage Scorer</h4>
+
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Mobile Number</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let s of scorers">
+          <ng-template [ngIf]="!s.verified">
+            <td>{{ s.username }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.mobileno }}</td>
+            <td>
+              <a
+                routerLink="/admin/dashboard"
+                class="text-success"
+                (click)="scorerVerification('accept', s._id)"
+                >Accept</a
+              >
+            </td>
+            <td>
+              <a
+                routerLink="/admin/dashboard"
+                class="text-danger"
+                (click)="scorerVerification('decline', s._id)"
+                >Decline</a
+              >
+            </td>
+          </ng-template>
+        </tr>
+        <tr *ngIf="scorerCount == 0">
+          <td colspan="5" class="text-center">No pending request</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-4">
+    <h4 class="h4">Active Scorers</h4>
+
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Mobile Number</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let s of scorers">
+          <ng-template [ngIf]="s.verified">
+            <td>{{ s.username }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.mobileno }}</td>
+          </ng-template>
+        </tr>
+        <tr *ngIf="scorerCount == 0">
+          <td colspan="5" class="text-center">No Scorer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

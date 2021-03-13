@@ -21,10 +21,11 @@
       </p>
       <p
         class="fs-5 text-center text-info"
-        *ngIf="this.res.status != 'finished'"
+        *ngIf="res.status == 'live' && res.half != 3"
       >
         {{ this.minute }}
       </p>
+      <p class="fs-5 text-center text-info" *ngIf="res.half == 3">Half Time</p>
     </div>
   </div>
 
@@ -137,34 +138,63 @@
       />
     </div>
     <div class="col-5">
-      <ng-container *ngFor="let p of res.red_card.team2.player; index as i">
-        {{ p }}
+      <ng-container *ngFor="let p of res.substitutions.team2.in; index as i">
+        <span class="text-success">{{ p }}</span>
         <span class="badge bg-primary ms-1">{{
-          res.red_card.team2.times[i]
+          res.substitutions.team2.times[i]
         }}</span>
         <br />
+        <span class="text-danger">{{ res.substitutions.team2.out[i] }}</span>
       </ng-container>
     </div>
   </div>
 
-  <div class="row mt-5">
+  <div
+    class="row mt-5"
+    *ngIf="res.status == 'live' || res.status == 'finished'"
+  >
     <div class="col-5 offset-lg-1">
       <p class="fs-5">{{ res.team1.name }} Playing11</p>
-      <p>{{ res.team1.playing11 }}</p>
-      <p class="fs-5">Bench</p>
-      <p>{{ res.team1.substitutes }}</p>
+      <p *ngFor="let p of res.team1.playing11; index as i" class="m-0">
+        {{ i + 1 }}. {{ p }}
+      </p>
+      <p class="fs-5 mt-1 mb-0">Bench</p>
+      <p *ngFor="let p of res.team1.substitutes; index as i" class="m-0">
+        {{ i + 1 }}. {{ p }}
+      </p>
       <p>Headcoach: {{ res.team1.headcoach }}</p>
     </div>
 
     <div class="col-5 offset-lg-1">
       <p class="fs-5">{{ res.team2.name }} Playing11</p>
-      <p>{{ res.team2.playing11 }}</p>
-      <p class="fs-5">Bench</p>
-      <p>{{ res.team2.substitutes }}</p>
+      <p *ngFor="let p of res.team2.playing11; index as i" class="m-0">
+        {{ i + 1 }}. {{ p }}
+      </p>
+      <p class="fs-4 mt-1 mb-0">Bench</p>
+      <p *ngFor="let p of res.team2.substitutes; index as i" class="m-0">
+        {{ i + 1 }}. {{ p }}
+      </p>
       <p>Headcoach: {{ res.team2.headcoach }}</p>
     </div>
   </div>
 
+  <div class="row mt-5" *ngIf="res.status == 'upcoming'">
+    <div class="col-5 offset-lg-1">
+      <p class="fs-5">{{ res.team1.name }} Squad</p>
+      <p *ngFor="let p of res.team1.squad; index as i" class="m-0">
+        {{ i + 1 }}. {{ p }}
+      </p>
+      <p class="mt-1">Headcoach: {{ res.team1.headcoach }}</p>
+    </div>
+
+    <div class="col-5 offset-lg-1">
+      <p class="fs-5">{{ res.team2.name }} Squad</p>
+      <p *ngFor="let p of res.team2.squad; index as i" class="m-0">
+        {{ i + 1 }}. {{ p }}
+      </p>
+      <p class="mt-1">Headcoach: {{ res.team2.headcoach }}</p>
+    </div>
+  </div>
   <div class="text-center mt-2 mb-5">
     <a routerLink="/football/view">Back</a>
   </div>

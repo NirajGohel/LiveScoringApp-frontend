@@ -24,6 +24,7 @@ export class ViewMatchComponent implements OnInit {
     this.Football.getMatch(this.route.snapshot.paramMap.get('id')).subscribe(
       (data) => {
         this.res = data;
+        this.matchDate = this.res.date;
 
         this.Football.getTime().subscribe(
           (data) => {
@@ -48,5 +49,11 @@ export class ViewMatchComponent implements OnInit {
     setInterval(() => {
       this.minute++;
     }, 60000);
+
+    let autoRefersh = setInterval(() => {
+      if (this.res.status == 'finished' || this.res.status == 'upcoming') {
+        clearInterval(autoRefersh);
+      } else window.location.reload();
+    }, 15000);
   }
 }
