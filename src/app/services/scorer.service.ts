@@ -36,4 +36,12 @@ export class ScorerService {
   getAllScorer() {
     return this.http.get(`${this.baseUrl}/getallscorers`);
   }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }

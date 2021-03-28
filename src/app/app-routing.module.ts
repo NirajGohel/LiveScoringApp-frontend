@@ -28,7 +28,13 @@ const routes: Routes = [
         (m) => m.FootballModule
       ),
   },
-  { path: 'volleyball', loadChildren: () => import('./modules/volleyball/volleyball.module').then(m => m.VolleyballModule) },
+  {
+    path: 'volleyball',
+    loadChildren: () =>
+      import('./modules/volleyball/volleyball.module').then(
+        (m) => m.VolleyballModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -8,6 +8,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 
+import { AuthGuard } from '../../guards/auth.guard';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -17,7 +19,11 @@ const routes: Routes = [
     path: 'dashboard',
     redirectTo: 'dashboard/home',
   },
-  { path: 'dashboard/home', component: HomeComponent },
+  {
+    path: 'dashboard/home',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'football',
     loadChildren: () =>

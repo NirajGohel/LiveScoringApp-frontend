@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           this.res = data;
           localStorage.setItem('id', this.res.scorer._id);
+          localStorage.setItem('token', this.res.token);
           this.router.navigate(['/scorer/dashboard']);
         },
         (error) => {
