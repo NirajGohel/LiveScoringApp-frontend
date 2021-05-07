@@ -6,11 +6,17 @@ import { CreateMatchComponent } from './create-match/create-match.component';
 import { ScoringMatchComponent } from './scoring-match/scoring-match.component';
 import { ViewMatchComponent } from './view-match/view-match.component';
 
+import { AuthGuard } from '../../guards/auth.guard';
+
 const routes: Routes = [
   { path: 'view', component: VolleyballComponent },
   { path: 'view/:id', component: ViewMatchComponent },
-  { path: 'create', component: CreateMatchComponent },
-  { path: 'scoring/:id', component: ScoringMatchComponent },
+  { path: 'create', component: CreateMatchComponent, canActivate: [AuthGuard] },
+  {
+    path: 'scoring/:id',
+    component: ScoringMatchComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
