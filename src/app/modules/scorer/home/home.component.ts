@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
 
   public fbmatches;
   public fbcount = 0;
+  public fblivecount = 0;
+  public vblivecount = 0;
 
   public vbmatches;
   public vbcount = 0;
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit {
 
         for (let m of this.fbmatches) {
           if (m.status == 'upcoming') this.fbcount++;
+          if (m.status == 'live') this.fblivecount++;
         }
       },
       (error) => console.log(error)
@@ -52,6 +55,7 @@ export class HomeComponent implements OnInit {
 
         for (let m of this.vbmatches) {
           if (m.status == 'not_started') this.vbcount++;
+          if (m.status == 'live') this.vblivecount++;
         }
       },
       (error) => console.log(error)

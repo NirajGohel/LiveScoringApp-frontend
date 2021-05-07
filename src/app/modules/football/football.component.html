@@ -42,8 +42,11 @@
         <div class="card mb-4">
           <div class="card-body">
             <h5 class="h5 card-title">{{ m.title }}</h5>
-            <h6 class="h6 card-subtitle mb-2 text-success">
-              {{ m.status }} - {{ m.city }}
+            <h6 class="h6 card-subtitle mb-1 text-success">
+              {{ m.status }} - {{ m.city }} 
+            </h6>
+            <h6>
+              {{m.date | date: "mediumDate"}}
             </h6>
             <div class="my-4">
               <h5 class="h5">{{ m.team1.name }} - {{ m.score.team1.goal }}</h5>

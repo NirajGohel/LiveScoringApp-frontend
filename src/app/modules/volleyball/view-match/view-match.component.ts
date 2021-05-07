@@ -20,5 +20,12 @@ export class ViewMatchComponent implements OnInit {
       (data) => (this.res = data),
       (error) => console.log(error)
     );
+
+    
+    let autoRefersh = setInterval(() => {
+      if (this.res.status == 'finished' || this.res.status == 'upcoming') {
+        clearInterval(autoRefersh);
+      } else window.location.reload();
+    }, 10000);
   }
 }

@@ -8,8 +8,83 @@
     username
   }}</span>
 
-  <div class="mt-4">
-    <h4 class="h4">Manage Matches</h4>
+ <div class="mt-4">
+    <h4 class="h3">Live Matches</h4>
+    <h5 class="h5" style="font-weight: normal">Football</h5>
+
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Team 1</th>
+          <th>Team 2</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let m of fbmatches">
+          <ng-template [ngIf]="m.status == 'live'">
+            <td>{{ m.title }}</td>
+            <td>{{ m.team1.name }}</td>
+            <td>{{ m.team2.name }}</td>
+            <td>{{ m.date | date: "mediumDate" }}</td>
+            <td>{{ m.start_time }}</td>
+            <td><a routerLink="/football/scoring/{{ m._id }}">Continue</a></td>
+          </ng-template>
+        </tr>
+        <tr *ngIf="fblivecount == 0">
+          <td colspan="7" class="text-center">No Live matches</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mt-4">
+      <h5 class="h5" style="font-weight: normal">Volleyball</h5>
+
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let m of vbmatches">
+            <ng-template [ngIf]="m.status == 'live'">
+              <td>{{ m.title }}</td>
+              <td>{{ m.team1.name }}</td>
+              <td>{{ m.team2.name }}</td>
+              <td>{{ m.date | date: "mediumDate" }}</td>
+              <td>{{ m.start_time }}</td>
+              <td>
+                <a
+                  routerLink="/volleyball/scoring/{{ m._id }}"
+                  >Continue</a
+                >
+              </td>
+            </ng-template>
+          </tr>
+          <tr *ngIf="vblivecount == 0">
+            <td colspan="7" class="text-center">No Live matches</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+<div class="mt-5 " style="border: 0.5px solid black">
+</div>
+  <div class="mt-3">
+    <h4 class="h3">Upcoming Matches</h4>
     <h5 class="h5" style="font-weight: normal">Football</h5>
 
     <table class="table table-striped mt-3">
@@ -93,3 +168,65 @@
     </div>
   </div>
 </div>
+
+<div class="mt-5 " style="border: 0.5px solid black">
+</div>
+  <div class="mt-3">
+    <h4 class="h3">Finished Matches</h4>
+    <h5 class="h5" style="font-weight: normal">Football</h5>
+
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Team 1</th>
+          <th>Team 2</th>
+          <th>Date</th>
+          <th>Time</th>
+            <th>Result</th>
+         </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let m of fbmatches">
+          <ng-template [ngIf]="m.status == 'finished'">
+            <td>{{ m.title }}</td>
+            <td>{{ m.team1.name }}</td>
+            <td>{{ m.team2.name }}</td>
+            <td>{{ m.date | date: "mediumDate" }}</td>
+            <td>{{ m.start_time }}</td>
+            <td>{{ m.result }}</td>
+          </ng-template>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="mt-5 mb-5">
+      <h5 class="h5" style="font-weight: normal">Volleyball</h5>
+
+      <table class="table table-striped mt-3 ">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let m of vbmatches">
+            <ng-template [ngIf]="m.status == 'finished'">
+              <td>{{ m.title }}</td>
+              <td>{{ m.team1.name }}</td>
+              <td>{{ m.team2.name }}</td>
+              <td>{{ m.date | date: "mediumDate" }}</td>
+              <td>{{ m.start_time }}</td>
+              <td>{{ m.result }}</td>
+            </ng-template>
+          </tr>
+         </tbody>
+      </table>
+    </div>

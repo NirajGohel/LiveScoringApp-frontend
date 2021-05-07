@@ -54,6 +54,6 @@ export class ViewMatchComponent implements OnInit {
       if (this.res.status == 'finished' || this.res.status == 'upcoming') {
         clearInterval(autoRefersh);
       } else window.location.reload();
-    }, 15000);
+    }, 5000);
   }
 }
